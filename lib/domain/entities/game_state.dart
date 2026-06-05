@@ -17,14 +17,12 @@ class GuessResult {
 class GameState {
   final int secretNumber;
   final int remainingAttempts;
-  final List<GuessResult> previousGuesses;
   final GameStatus status;
   final String message;
 
   const GameState({
     required this.secretNumber,
     required this.remainingAttempts,
-    required this.previousGuesses,
     required this.status,
     required this.message,
   });
@@ -33,7 +31,6 @@ class GameState {
     return GameState(
       secretNumber: secretNumber,
       remainingAttempts: 3,
-      previousGuesses: const [],
       status: GameStatus.playing,
       message: '¡Adivina el número secreto entre 1 y 50!',
     );
@@ -42,14 +39,12 @@ class GameState {
   GameState copyWith({
     int? secretNumber,
     int? remainingAttempts,
-    List<GuessResult>? previousGuesses,
     GameStatus? status,
     String? message,
   }) {
     return GameState(
       secretNumber: secretNumber ?? this.secretNumber,
       remainingAttempts: remainingAttempts ?? this.remainingAttempts,
-      previousGuesses: previousGuesses ?? this.previousGuesses,
       status: status ?? this.status,
       message: message ?? this.message,
     );

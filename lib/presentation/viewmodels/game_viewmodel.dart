@@ -21,11 +21,9 @@ class GameViewModel extends ChangeNotifier {
   GameState get state => _state;
   int get secretNumber => _state.secretNumber;
   int get remainingAttempts => _state.remainingAttempts;
-  List<GuessResult> get previousGuesses => _state.previousGuesses;
   GameStatus get status => _state.status;
   String get message => _state.message;
   String? get validationError => _validationError;
-
   bool get isGameOver => _state.status != GameStatus.playing;
 
   // Actions
@@ -53,7 +51,6 @@ class GameViewModel extends ChangeNotifier {
       return;
     }
 
-    // Process guess
     _state = guessNumberUseCase(_state, guess);
     notifyListeners();
   }
